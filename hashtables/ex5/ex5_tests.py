@@ -1,4 +1,5 @@
 import unittest
+import os
 
 from ex5 import finder
 
@@ -29,10 +30,12 @@ class TestEx2(unittest.TestCase):
         files = []
 
         for i in range(500000):
+
             files.append(f"/dir{i}/file{i}")
 
         for i in range(500000):
             files.append(f"/dir{i}/dirb{i}/file{i}")
+        # print(f'files {files}')
 
         queries = []
 
@@ -45,8 +48,10 @@ class TestEx2(unittest.TestCase):
             "file999999",
             "file8192"
         ]
+        # print(f'queries {queries}')
 
         result = finder(files, queries)
+        # print(f'RESULT {result}')
         result.sort()
 
         self.assertTrue(result == ['/dir256/dirb256/file256',
